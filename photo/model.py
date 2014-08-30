@@ -10,6 +10,11 @@ class Album:
 	def addPhoto(self,photo):
 		self.photos.append(photo)
 
+	def printAllPhoto(self):
+		print self
+		for photo in self.photos:
+			print "\t- {}".format(photo)
+
 	def __str__(self):
 		nbPhotos = len(self.photos)
 		return "Il y a {} photo{} dans l'album \"{}\"".format(nbPhotos, "s" if nbPhotos > 0 else "", self.name )
@@ -22,6 +27,9 @@ class Photo:
 		self.size = size
 		self.unitSize = unit
 
+	def __str__(self):
+		return "Photo de {} avec un {} pour une taille de {}{}".format(self.author, self.device, self.size, self.unitSize.shortName)
+
 class UnitSize:
 	
 	def __init__(self, name, shortName):
@@ -31,8 +39,7 @@ class UnitSize:
 if __name__ == "__main__":
 	
 	pA = Photo("JPascal", "D7000", 20, UnitSize("Megaoctet", "Mo"))
-	print "Photo prise par {} avec {} [{} {}]".format(pA.author, pA.device, pA.size, pA.unitSize.shortName)
-
+	
 	print pA
 
 	albumVacances = Album("Vacances")
@@ -40,4 +47,4 @@ if __name__ == "__main__":
 	
 	albumVacances.addPhoto(pA)
 
-	print albumVacances
+	albumVacances.printAllPhoto()
