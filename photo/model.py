@@ -10,6 +10,10 @@ class Album:
 	def addPhoto(self,photo):
 		self.photos.append(photo)
 
+	def __str__(self):
+		nbPhotos = len(self.photos)
+		return "Il y a {} photo{} dans l'album \"{}\"".format(nbPhotos, "s" if nbPhotos > 0 else "", self.name )
+
 class Photo:
 	
 	def __init__(self, author, device, size, unit):
@@ -29,9 +33,11 @@ if __name__ == "__main__":
 	pA = Photo("JPascal", "D7000", 20, UnitSize("Megaoctet", "Mo"))
 	print "Photo prise par {} avec {} [{} {}]".format(pA.author, pA.device, pA.size, pA.unitSize.shortName)
 
+	print pA
+
 	albumVacances = Album("Vacances")
-	print "Il y a {} photos dans l'album".format(len(albumVacances.photos))
+	print albumVacances
 	
 	albumVacances.addPhoto(pA)
-	print "Il y a {} photos dans l'album".format(len(albumVacances.photos))
 
+	print albumVacances
