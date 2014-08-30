@@ -9,7 +9,7 @@ class PhotoProvider:
 		res = {}
 		files = os.listdir(rootDirectory)
 		for f in files:
-			print f
+			print f	
 		return res
 		
 
