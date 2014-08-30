@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*-coding:Utf-8 -*
 
+from unit import *
+
 class Album:
 	
 	def __init__(self, name):
@@ -21,24 +23,20 @@ class Album:
 
 class Photo:
 	
-	def __init__(self, author, device, size, unit):
+	def __init__(self, author, device, size):
 		self.author = author
 		self.device = device
 		self.size = size
-		self.unitSize = unit
 
 	def __str__(self):
-		return "Photo de {} avec un {} pour une taille de {}{}".format(self.author, self.device, self.size, self.unitSize.shortName)
+		return "Photo de {} avec un {} pour une taille de {}".format(self.author, self.device, self.size)
 
-class UnitSize:
-	
-	def __init__(self, name, shortName):
-		self.name = name
-		self.shortName = shortName
 
 if __name__ == "__main__":
 	
-	pA = Photo("JPascal", "D7000", 20, UnitSize("Megaoctet", "Mo"))
+	unitMo = UnitSize("MegaOctet", "Mo")
+	
+	pA = Photo("JPascal", "D7000", Size(20,unitMo))
 	
 	print pA
 
